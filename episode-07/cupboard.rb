@@ -1,3 +1,5 @@
+require 'pry'
+
 class Cupboard
 
   attr_accessor :shelf
@@ -14,6 +16,8 @@ class Cupboard
   end
 
   def find_glass
+    # binding.pry
+
     @shelf.contents.find { |obj| obj.class == Glass }
   end
 
