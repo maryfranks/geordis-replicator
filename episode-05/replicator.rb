@@ -1,4 +1,4 @@
-# require 'pry'
+require 'pry'
 
 class Replicator
 
@@ -10,6 +10,7 @@ class Replicator
     @plate = Location.new
     @power = false
     connect_to_power
+
   end
 
   def connect_to_power
@@ -26,6 +27,7 @@ class Replicator
   end
 
   def retrieve_glass
+    # binding.pry
     @enterprise.transporter.energize(obj: @enterprise.cupboard.find_glass, from: @enterprise.cupboard.shelf, to: @tummy)
   end
 
@@ -50,6 +52,7 @@ class Replicator
   end
 
   def adjust_temperature
+
     return unless glass_in_tummy
 
     glass_in_reactor_core = @enterprise.transporter.energize(obj: glass_in_tummy, from: @tummy, to: @enterprise.reactor.core)
@@ -69,6 +72,7 @@ class Replicator
 
       number_of_adjustments += 1
 
+
     end
 
     @enterprise.transporter.energize(obj: glass_in_reactor_core, from: @enterprise.reactor.core, to: @tummy)
@@ -76,9 +80,9 @@ class Replicator
   end
 
   def transport_glass_to_replicator_plate
-
     # return
     @enterprise.transporter.energize(obj: glass_in_tummy, from: @tummy, to: @plate)
+
     return
   end
 
