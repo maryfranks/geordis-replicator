@@ -1,3 +1,4 @@
+# require 'pry'
 class Transporter
 
   def initialize(enterprise)
@@ -14,6 +15,7 @@ class Transporter
     return unless @power
 
     if @enterprise.reactor.draw_power(3)
+              # binding.pry
       to.contents << from.contents.delete(obj)
       return obj
     end
